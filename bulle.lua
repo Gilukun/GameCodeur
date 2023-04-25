@@ -1,5 +1,9 @@
 local bubble ={}
 
+EtatBouclier = "Bouclier"
+ET_BLANC = "blanc"
+ET_VERT = "Vert"
+
 local bul ={}
 bul.x = 100
 bul.y = 200
@@ -7,6 +11,30 @@ bul.vx = love.math.random(-200,200)
 bul.vy = love.math.random(-200,200)
 bul.rayon = 10
 bul.rebound = false
+bul.etat = ET_BLANC
+
+
+local tempsBouclier = 10
+local timer = tempsBouclier
+
+function bulChangeEtat()
+    if bul.etat == ET_BLANC then
+        bul.etat = ET_VERT
+    elseif bul.etat == ET_VERT then 
+        bul.etat = ET_BLANC
+    end
+end
+
+function Bouclier(dt)
+    timer = timer - dt
+    if timer > 0 then 
+        bul.etat = EtatBouclier
+    end
+    if timer < 5 then      
+        bul.etat = ET_BLANC 
+        timer = tempsBouclier
+    end
+end
 
 function bubble.Move(dt)
     
@@ -28,14 +56,26 @@ function bubble.Move(dt)
         bul.vy = - bul.vy  
         bul.y = bul.rayon
     end
+    Bouclier(dt)
+        
 end
 
 function bubble.draw()
-    red = love.math.random(1,255)
-    blue = love.math.random(1,255)
-    green = love.math.random(1,255)
-    love.graphics.setColor(love.math.colorFromBytes(red, blue, green)) 
+    if bul.etat == ET_VERT then
+        love.graphics.setColor(0,1,0) 
+    end
+
+    if bul.etat == EtatBouclier then
+        love.graphics.circle("line", bul.x, bul.y, bul.rayon + 10)
+    end
+
     love.graphics.circle("line", bul.x, bul.y, bul.rayon)
+    love.graphics.setColor(1,1,1) 
+    love.graphics.print(tostring(timer))
+end
+
+function bubble.keypressed(key)
+
 end
 
 return bubble
