@@ -14,6 +14,7 @@ function love.load()
 end
 
 function love.update(dt)
+    dt = math.min(dt, 1/60) -- bloquer le dt permet d'eviter les sauts de framerate
     etoile.StarMove(dt)
     bubble.Move(dt)
 end
