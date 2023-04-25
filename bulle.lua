@@ -14,13 +14,11 @@ function bubble.Move(dt)
     bul.x = bul.x + bul.vx * dt
     bul.y = bul.y + bul.vy * dt
 
-    if bul.x + bul.rayon >= lScreen or 
-        bul.x - bul.rayon <= 0 then
+    if bul.x + bul.rayon >= lScreen or bul.x - bul.rayon <= 0 then
         bul.vx = - bul.vx  
     end
 
-    if bul.y + bul.rayon >= hScreen or 
-        bul.y - bul.rayon <= 0 then
+    if bul.y + bul.rayon >= hScreen or bul.y - bul.rayon <= 0 then
         bul.vy = - bul.vy  
     end
 end
