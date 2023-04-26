@@ -13,10 +13,8 @@ bul.rayon = 10
 bul.rebound = false
 bul.etat = ET_BLANC
 
-
-timer = 10
-
-
+timer = 20 
+decompte = timer
 function bulChangeEtat()
     if bul.etat == ET_BLANC then
         bul.etat = ET_VERT
@@ -25,10 +23,9 @@ function bulChangeEtat()
     end
 end
 
-function bubble.Bouclier(dt)
-    local timer = 10
-    if timer > 0 then 
-        timer = timer - dt
+function bubble.Bouclier()
+    if bul.etat == ET_BLANC then
+        bul.etat = EtatBouclier
     end
 end
 
@@ -51,10 +48,18 @@ function bubble.Move(dt)
         bul.vy = - bul.vy  
         bul.y = bul.rayon
     end 
+
+    if bul.etat == EtatBouclier then 
+        if decompte > 0 then 
+            decompte = decompte - dt
+        end
+        if decompte  < 0 then 
+        bul.etat = ET_BLANC
+        decompte = timer
+        end
+    end
+
 end
-
-
-
 
 
 function bubble.draw()
@@ -63,12 +68,14 @@ function bubble.draw()
     end
 
     if bul.etat == EtatBouclier then
-        love.graphics.circle("line", bul.x, bul.y, bul.rayon + 10)
+        -- love.graphics.circle("line", bul.x, bul.y, bul.rayon + 10)
+        love.graphics.setColor(love.math.colorFromBytes(147, 115, 217, 100)) 
+        love.graphics.circle ("fill", bul.x, bul.y, bul.rayon + decompte)
+        love.graphics.setColor(1,1,1) 
     end
 
     love.graphics.circle("line", bul.x, bul.y, bul.rayon)
     love.graphics.setColor(1,1,1) 
-    love.graphics.print(math.ceil(timer))
 end
 
 function bubble.keypressed(key)
