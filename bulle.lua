@@ -13,8 +13,10 @@ bul.rayon = 10
 bul.rebound = false
 bul.etat = ET_BLANC
 
-timer = 20 
+timer = 10 
 decompte = timer
+
+
 function bulChangeEtat()
     if bul.etat == ET_BLANC then
         bul.etat = ET_VERT
@@ -76,6 +78,7 @@ function bubble.draw()
 
     love.graphics.circle("line", bul.x, bul.y, bul.rayon)
     love.graphics.setColor(1,1,1) 
+    love.graphics.print(tostring(decompte))
 end
 
 function bubble.keypressed(key)
