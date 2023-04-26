@@ -14,6 +14,7 @@ function love.load()
     lScreen = love.graphics.getWidth()
     hScreen = love.graphics.getHeight()
     etoile.CreateStar()
+    bubble.Load()
 end
 
 function UpdateMenu()

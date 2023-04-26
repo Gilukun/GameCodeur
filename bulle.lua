@@ -25,11 +25,17 @@ function bulChangeEtat()
     end
 end
 
+function bubble.Load()
+    quack = love.audio.newSource("Sound/Quack.mp3", "static")
+end
+
 function bubble.Bouclier()
     if bul.etat == ET_BLANC then
         bul.etat = EtatBouclier
+        quack:play()
     end
 end
+
 
 function bubble.Move(dt)
     bul.x = bul.x + bul.vx * dt
