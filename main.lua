@@ -23,6 +23,7 @@ function UpdateJeu(dt)
     dt = math.min(dt, 1/60) -- bloquer le dt permet d'eviter les sauts de framerate
     etoile.StarMove(dt)
     bubble.Move(dt)
+    bubble.Bouclier(dt)
 end
 
 function love.update(dt)
@@ -55,7 +56,6 @@ function love.keypressed(key)
         if key == "a" then 
             EtatJeu ="jeu"
         end
-        
     elseif EtatJeu =="jeu" then
         if key == "space" then 
             bulChangeEtat()
@@ -66,7 +66,5 @@ function love.keypressed(key)
         if key == "escape" then 
             EtatJeu ="Menu"
         end
-        
-
     end
 end
