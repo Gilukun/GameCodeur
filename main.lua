@@ -61,7 +61,7 @@ function love.keypressed(key)
             bulChangeEtat()
         end
         if key == "b" then
-            Bouclier()
+            bubble.Bouclier(dt)
         end
         if key == "escape" then 
             EtatJeu ="Menu"
