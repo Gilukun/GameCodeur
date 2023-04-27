@@ -6,6 +6,8 @@ end
 -- Cette ligne permet d'afficher des traces dans la console pendant l'éxécution
 io.stdout:setvbuf("no")
 
+function math.angle(x1,y1, x2,y2) return math.atan2(y2-y1, x2-x1) end
+
 imageTank = love.graphics.newImage("images/tank.png")
 
 local tank = require("tank")
@@ -18,7 +20,7 @@ end
 function love.update(dt)
    tank.Update(dt)
    moduleTirs.Update(dt)
-   tourelle.update()
+   tourelle.update(dt)
 end
 
 function love.draw()
