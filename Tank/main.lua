@@ -10,6 +10,7 @@ imageTank = love.graphics.newImage("images/tank.png")
 
 local tank = require("tank")
 local moduleTirs = require("tirs")
+local tourelle = require("Tourelle")
 
 function love.load()
 end
@@ -17,11 +18,13 @@ end
 function love.update(dt)
    tank.Update(dt)
    moduleTirs.Update(dt)
+   tourelle.update()
 end
 
 function love.draw()
     moduleTirs.Draw()
     tank.draw()
+    tourelle.draw()
     love.graphics.print(moduleTirs.GetNumberOfTirs())
 end
 
