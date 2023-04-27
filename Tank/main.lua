@@ -18,11 +18,7 @@ function love.load()
 end
 
 function love.update(dt)
-    if love.keyboard.isDown("right") then
-        tank:tourne(2 * dt)
-    elseif love.keyboard.isDown("left") then
-        tank:tourne(-2 * dt)
-    end
+   tank.Update()
 
     moduleTirs.Update(dt)
 end
