@@ -6,21 +6,19 @@ end
 -- Cette ligne permet d'afficher des traces dans la console pendant l'éxécution
 io.stdout:setvbuf("no")
 
+
+
 imageTank = love.graphics.newImage("images/tank.png")
 
-print("je vais charger le module tank")
 local tank = require("tank")
-print("l'adresse du moduleTank dans main est " .. tostring(moduleTank))
-print("je vais charger le module tirs")
 local moduleTirs = require("tirs")
 
 function love.load()
 end
 
 function love.update(dt)
-   tank.Update()
-
-    moduleTirs.Update(dt)
+   tank.Update(dt)
+   moduleTirs.Update(dt)
 end
 
 function love.draw()
