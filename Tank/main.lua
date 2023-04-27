@@ -6,8 +6,6 @@ end
 -- Cette ligne permet d'afficher des traces dans la console pendant l'éxécution
 io.stdout:setvbuf("no")
 
-
-
 imageTank = love.graphics.newImage("images/tank.png")
 
 local tank = require("tank")
@@ -24,7 +22,6 @@ end
 function love.draw()
     moduleTirs.Draw()
     tank.draw()
-
     love.graphics.print(moduleTirs.GetNumberOfTirs())
 end
 
