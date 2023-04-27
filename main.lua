@@ -10,8 +10,8 @@ EtatJeu = "Menu"
 
 
 function love.load()
-    love.window.setMode(1024,800)
     lScreen = love.graphics.getWidth()
+    -- love.window.setMode(1024,800)
     hScreen = love.graphics.getHeight()
     etoile.CreateStar()
 end
